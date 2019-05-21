@@ -8,7 +8,7 @@ import org.parabot.environment.scripts.Category;
 import org.parabot.environment.scripts.Script;
 import org.parabot.environment.scripts.ScriptManifest;
 import org.parabot.environment.scripts.framework.Strategy;
-import org.parabot.itunes.irunecrafting.GUI.GUI;
+import org.parabot.itunes.irunecrafting.gui.gui;
 import org.parabot.itunes.irunecrafting.data.Selector;
 import org.parabot.itunes.irunecrafting.strategies.*;
 import org.rev317.min.api.methods.Skill;
@@ -58,8 +58,8 @@ public class Core extends Script implements Paintable
 
         provide(strategies);
 
-        //LOAD GUI
-        GUI gui = new GUI();
+        //LOAD gui
+        gui gui = new gui();
 
         while(gui.isVisible()) {
             Time.sleep(250);
