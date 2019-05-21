@@ -15,23 +15,23 @@ import static org.rev317.min.api.methods.Players.getMyPlayer;
 public class TeleportToAltar implements Strategy {
     @Override
     public boolean activate() {
-        return Inventory.isFull() && Inventory.contains(Core.currentAltar.getTalismanID()) && SceneObjects.getClosest(Core.currentAltar.getAltarID()) == null && Game.isLoggedIn();
+        return Inventory.isFull() && Inventory.contains(Core.getSettings().getCurrentAltar().getTalismanID()) && SceneObjects.getClosest(Core.getSettings().getCurrentAltar().getAltarID()) == null && Game.isLoggedIn();
     }
 
     @Override
     public void execute()
     {
         Logger.addMessage("iRuneCrafting: teleporting to altar", true);
-        Core.currentStatus = "Teleporting to altar";
+        Core.getSettings().setCurrentStatus("Teleporting to altar");
 
-        Inventory.getItem(Core.currentAltar.getTalismanID()).interact(Items.Option.FOURTH);
+        Inventory.getItem(Core.getSettings().getCurrentAltar().getTalismanID()).interact(Items.Option.FOURTH);
 
         Time.sleep(new SleepCondition()
         {
             @Override
             public boolean isValid()
             {
-                return SceneObjects.getClosest(Core.currentAltar.getAltarID()) != null && getMyPlayer().getAnimation() == -1;
+                return SceneObjects.getClosest(Core.getSettings().getCurrentAltar().getAltarID()) != null && getMyPlayer().getAnimation() == -1;
             }
         }, 5000);
     }

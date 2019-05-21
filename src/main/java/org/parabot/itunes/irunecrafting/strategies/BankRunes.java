@@ -17,14 +17,14 @@ public class BankRunes implements Strategy {
     @Override
     public boolean activate()
     {
-        return Core.mode.equals("Bank runes") && Core.needsBanking && Inventory.contains(Core.currentAltar.getRuneID()) && Game.isLoggedIn();
+        return Core.getSettings().getMode().equals("Bank runes") && Core.getSettings().needsBanking() && Inventory.contains(Core.getSettings().getCurrentAltar().getRuneID()) && Game.isLoggedIn();
     }
 
     @Override
     public void execute()
     {
         Logger.addMessage("iRuneCrafting: teleporting to bank", true);
-        Core.currentStatus = "Teleporting to bank";
+        Core.getSettings().setCurrentStatus("Teleporting to bank");
 
         Menu.clickButton(20049);
         Time.sleep(new SleepCondition()
@@ -48,24 +48,24 @@ public class BankRunes implements Strategy {
         Time.sleep(250);
 
         Logger.addMessage("iRuneCrafting: banking runes", true);
-        Core.currentStatus = "Banking runes";
+        Core.getSettings().setCurrentStatus("Banking runes");
 
         Bank.open();
         Time.sleep(Bank::isOpen, 3000);
 
-        Bank.depositAllExcept(Core.currentAltar.getTalismanID(), Constants.RUNE_ESSENCE_ID);
+        Bank.depositAllExcept(Core.getSettings().getCurrentAltar().getTalismanID(), Constants.RUNE_ESSENCE_ID);
         Time.sleep(new SleepCondition()
         {
             @Override
             public boolean isValid()
             {
-                return !Inventory.contains(Core.currentAltar.getRuneID());
+                return !Inventory.contains(Core.getSettings().getCurrentAltar().getRuneID());
             }
         }, 5000);
 
 
         Bank.close();
-        Core.needsBanking = false;
+        Core.getSettings().setNeedsBanking(false);
         Time.sleep(new SleepCondition()
         {
             @Override

@@ -16,14 +16,14 @@ import static org.rev317.min.api.methods.Players.getMyPlayer;
 public class CraftRune implements Strategy {
     @Override
     public boolean activate() {
-        return SceneObjects.getClosest(Core.currentAltar.getAltarID()) != null && Inventory.contains(Core.currentAltar.getTalismanID()) && Inventory.contains(RUNE_ESSENCE_ID) && Game.isLoggedIn();
+        return SceneObjects.getClosest(Core.getSettings().getCurrentAltar().getAltarID()) != null && Inventory.contains(Core.getSettings().getCurrentAltar().getTalismanID()) && Inventory.contains(RUNE_ESSENCE_ID) && Game.isLoggedIn();
     }
 
     @Override
     public void execute()
     {
         Logger.addMessage("iRuneCrafting: crafting runes", true);
-        Core.currentStatus = "Crafting runes";
+        Core.getSettings().setCurrentStatus("Crafting runes");
 
         int runesToCraft = Inventory.getCount(RUNE_ESSENCE_ID);
 
@@ -37,25 +37,25 @@ public class CraftRune implements Strategy {
                 return getMyPlayer().getAnimation() == -1;
             }
         }, 3000);
-        SceneObjects.getClosest(Core.currentAltar.getAltarID()).interact(SceneObjects.Option.CRAFT_RUNE);
+        SceneObjects.getClosest(Core.getSettings().getCurrentAltar().getAltarID()).interact(SceneObjects.Option.CRAFT_RUNE);
         Time.sleep(new SleepCondition()
         {
             @Override
             public boolean isValid()
             {
-                return !Inventory.contains(RUNE_ESSENCE_ID) && Inventory.contains(Core.currentAltar.getRuneID()) && getMyPlayer().getAnimation() == -1;
+                return !Inventory.contains(RUNE_ESSENCE_ID) && Inventory.contains(Core.getSettings().getCurrentAltar().getRuneID()) && getMyPlayer().getAnimation() == -1;
             }
         }, 4000);
 
 
         if (!Inventory.contains(RUNE_ESSENCE_ID) && !Inventory.contains(RUNE_ESSENCE_ID))
         {
-            Core.runesCrafted = Core.runesCrafted + runesToCraft;
+            Core.getSettings().setRunesCrafted(Core.getSettings().getRunesCrafted() + runesToCraft);
         }
 
-        if (Core.mode.equals("Bank runes") && Inventory.contains(Core.currentAltar.getRuneID()))
+        if (Core.getSettings().getMode().equals("Bank runes") && Inventory.contains(Core.getSettings().getCurrentAltar().getRuneID()))
         {
-            Core.needsBanking = true;
+            Core.getSettings().setNeedsBanking(true);
         }
 
     }

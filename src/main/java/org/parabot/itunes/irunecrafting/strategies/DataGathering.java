@@ -13,21 +13,19 @@ public class DataGathering implements Strategy
 {
     @Override
     public boolean activate() {
-        return !Core.dataGathered;
+        return !Core.getSettings().dataIsGathered();
     }
 
     @Override
     public void execute()
     {
         Logger.addMessage("iRuneCrafting: gathering data", true);
-        Core.currentStatus = "Gathering data";
+        Core.getSettings().setCurrentStatus("Gathering data");
 
-        Core.currentAltar = Selector.correspondingAltar(Skill.RUNECRAFTING.getRealLevel(), Core.runes);
+        Core.getSettings().setCurrentAltar(Selector.correspondingAltar(Skill.RUNECRAFTING.getRealLevel(), Core.getSettings().getRunes()));
 
-        Core.startingLevel = Skill.RUNECRAFTING.getRealLevel();
-
-        Core.dataGathered = true;
+        Core.getSettings().setDataGathered(true);
         Logger.addMessage("iRuneCrafting: Data gathered", true);
-        Core.currentStatus = "Data gathered";
+        Core.getSettings().setCurrentStatus("Data gathered");
     }
 }

@@ -7,6 +7,8 @@ import org.parabot.environment.input.Keyboard;
 import org.parabot.itunes.irunecrafting.core.Core;
 import org.rev317.min.Loader;
 
+import java.text.DecimalFormat;
+
 public class Methods
 {
     //FUNCTIONAL
@@ -28,13 +30,25 @@ public class Methods
         int[] keys = new int[]{38, 40, 37, 39};
         if (Random.between(0, 4) == 2) {
             Logger.addMessage("iArcade: Performing antiAFK", true);
-            Core.currentStatus = "Anti AFK";
+            Core.getSettings().setCurrentStatus("Anti AFK");
             int keyCode = keys[Random.between(0, keys.length)];
             Keyboard.getInstance().pressKey(keyCode);
             Time.sleep(Random.between(800, 1500));
             Keyboard.getInstance().releaseKey(keyCode);
-            Core.currentStatus = "Waiting...";
+            Core.getSettings().setCurrentStatus("Waiting...");
         }
+    }
+
+    private String FormatNumber(double number) {
+        if (number >= 1000 && number < 1000000) {
+            return new DecimalFormat("#,###.0").format(number / 1000) + "K";
+        } else if (number >= 1000000 && number < 1000000000) {
+            return new DecimalFormat("#,###.0").format(number / 1000000) + "M";
+        } else if (number >= 1000000000) {
+            return new DecimalFormat("#,###.00").format(number / 1000000000) + "B";
+        }
+
+        return "" + number;
     }
 
     //Thanks to emmastone for this piece of code!

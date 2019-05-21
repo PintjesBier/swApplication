@@ -20,7 +20,7 @@ public class TeleportToAubury implements Strategy {
     public void execute()
     {
         Logger.addMessage("iRuneCrafting: teleporting to Aubury", true);
-        Core.currentStatus = "Teleporting to Aubury";
+        Core.getSettings().setCurrentStatus("Teleporting to Aubury");
 
         Menu.clickButton(20053);
         Time.sleep(new SleepCondition()

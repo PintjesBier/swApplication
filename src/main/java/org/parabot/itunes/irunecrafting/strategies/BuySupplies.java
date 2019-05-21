@@ -21,12 +21,11 @@ public class BuySupplies implements Strategy {
     public void execute()
     {
         Logger.addMessage("iRuneCrafting: buying supplies", true);
-        Core.currentStatus = "Buying supplies";
+        Core.getSettings().setCurrentStatus("Buying supplies");
 
         Methods.antiAFK();
 
-        Core.currentAltar = Selector.correspondingAltar(Skill.RUNECRAFTING.getRealLevel(), Core.runes);
-
+        Core.getSettings().setCurrentAltar(Selector.correspondingAltar(Skill.RUNECRAFTING.getRealLevel(), Core.getSettings().getRunes()));
 
         Time.sleep(new SleepCondition()
         {
@@ -46,12 +45,19 @@ public class BuySupplies implements Strategy {
             }
         }, 2000);
 
-        if (!Inventory.contains(Core.currentAltar.getTalismanID()))
+        if (!Inventory.contains(Core.getSettings().getCurrentAltar().getTalismanID()))
         {
-            Menu.sendAction(78, Core.currentAltar.getTalismanID() - 1, Methods.findShopSlot(Core.currentAltar.getTalismanID()),3900);
+            Menu.sendAction(78, Core.getSettings().getCurrentAltar().getTalismanID() - 1, Methods.findShopSlot(Core.getSettings().getCurrentAltar().getTalismanID()),3900);
         }
 
-        Time.sleep(() -> Inventory.contains(Core.currentAltar.getTalismanID()), 2000);
+        Time.sleep(new SleepCondition()
+        {
+            @Override
+            public boolean isValid()
+            {
+                return Inventory.contains(Core.getSettings().getCurrentAltar().getTalismanID());
+            }
+        }, 2000);
 
         if (Interfaces.getOpenInterfaceId() == Constants.SHOP_INTERFACE_ID) {
             while (!Inventory.isFull()) {

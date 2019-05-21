@@ -1,4 +1,4 @@
-package org.parabot.itunes.irunecrafting.gui;
+package org.parabot.itunes.irunecrafting.ui;
 
 import org.parabot.itunes.irunecrafting.core.Core;
 
@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * Created by Tristan on 4/09/2018.
  */
-public class gui extends JFrame {
+public class Gui extends JFrame {
     private JPanel panelMain;
     private JComboBox cmbRunes;
     private JButton btnStart;
@@ -17,7 +17,7 @@ public class gui extends JFrame {
     private JLabel lblSubTitle;
     private JComboBox cmbMode;
 
-    public gui() {
+    public Gui() {
         setTitle("Configure script");
         setContentPane(panelMain);
         setLocationRelativeTo(null);
@@ -26,8 +26,8 @@ public class gui extends JFrame {
         setVisible(true);
 
         btnStart.addActionListener(e -> {
-            Core.runes = Objects.requireNonNull(cmbRunes.getSelectedItem()).toString();
-            Core.mode = Objects.requireNonNull(cmbMode.getSelectedItem().toString());
+            Core.getSettings().setRunes(Objects.requireNonNull(cmbRunes.getSelectedItem()).toString());
+            Core.getSettings().setMode(Objects.requireNonNull(cmbMode.getSelectedItem().toString()));
             dispose();
         });
     }

@@ -12,18 +12,18 @@ import org.rev317.min.api.wrappers.Item;
 public class DropRunes implements Strategy {
     @Override
     public boolean activate() {
-        return Core.mode.equals("Drop runes") && Inventory.contains(Core.currentAltar.getRuneID()) && Game.isLoggedIn();
+        return Core.getSettings().getMode().equals("Drop runes") && Inventory.contains(Core.getSettings().getCurrentAltar().getRuneID()) && Game.isLoggedIn();
     }
 
     @Override
     public void execute()
     {
         Logger.addMessage("iRuneCrafting: dropping runes", true);
-        Core.currentStatus = "Dropping runes";
+        Core.getSettings().setCurrentStatus("Dropping runes");
 
         for (Item i : Inventory.getItems())
         {
-            if (i.getId() == Core.currentAltar.getRuneID())
+            if (i.getId() == Core.getSettings().getCurrentAltar().getRuneID())
             {
                 i.interact(Items.Option.DROP);
                 Time.sleep(new SleepCondition()
