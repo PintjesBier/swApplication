@@ -9,10 +9,6 @@ import org.rev317.min.Loader;
 
 public class Methods
 {
-
-    //TELEPORTS
-
-
     //FUNCTIONAL
     public static String stripNonDigits(final CharSequence input)
     {
@@ -28,16 +24,16 @@ public class Methods
         return sb.toString();
     }
 
-    public static void ANTIAFK() {
+    public static void antiAFK() {
         int[] keys = new int[]{38, 40, 37, 39};
         if (Random.between(0, 4) == 2) {
             Logger.addMessage("iArcade: Performing antiAFK", true);
-            Core.CurrentStatus = "Anti AFK";
+            Core.currentStatus = "Anti AFK";
             int keyCode = keys[Random.between(0, keys.length)];
             Keyboard.getInstance().pressKey(keyCode);
             Time.sleep(Random.between(800, 1500));
             Keyboard.getInstance().releaseKey(keyCode);
-            Core.CurrentStatus = "Waiting...";
+            Core.currentStatus = "Waiting...";
         }
     }
 

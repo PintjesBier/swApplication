@@ -6,30 +6,19 @@ package org.parabot.itunes.irunecrafting.data;
 public class Constants
 {
     //Variables
-    public static int runeEssence_id = 1437;
-    public static int airTalisman_id = 1439;
-    public static int mindTalisman_id = 1449;
-    public static int waterTalisman_id = 1445;
-    public static int earthTalisman_id = 1441;
-    public static int bodyTalisman_id = 1447;
+    public static int RUNE_ESSENCE_ID = 1437;
 
-    public static int airRune_id = 557;
-    public static int mindRune_id = 559;
-    public static int waterRune_id = 556;
-    public static int earthRune_id = 558;
-    public static int bodyRune_id = 560;
-
-    public static int billCheck_id = 5022;
+    public static int BILL_CHECK_ID = 5022;
 
     //Interfaces
-    public static final int shop_interface_id = 3824;
+    public static final int SHOP_INTERFACE_ID = 3824;
 
     //NPCs
-    public static final int aubury_id = 553;
+    public static final int AUBURY_ID = 553;
 
     //Interfaces
-    public static int teleportBackDialog = 2492;
-    public static int dropBackDialog = 14170;
+    public static int TELEPORT_BACK_DIALOG_ID = 2492;
+    public static int DROP_BACK_DIALOG_ID = 14170;
 
 
 

@@ -9,6 +9,7 @@ import org.parabot.environment.scripts.Script;
 import org.parabot.environment.scripts.ScriptManifest;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.parabot.itunes.irunecrafting.GUI.GUI;
+import org.parabot.itunes.irunecrafting.data.Selector;
 import org.parabot.itunes.irunecrafting.strategies.*;
 import org.rev317.min.api.methods.Skill;
 
@@ -33,27 +34,27 @@ public class Core extends Script implements Paintable
     //VARIABLES
     public static boolean dataGathered = false;
     private final ArrayList<Strategy> strategies = new ArrayList<>();
-    public static String CurrentStatus = "Starting";
+    public static String currentStatus = "Starting";
     public static String runes;
     public static String mode;
     public static boolean needsBanking;
     public static int runesCrafted;
     public static int startingLevel;
-    public static org.parabot.itunes.irunecrafting.data.selector currentAltar;
+    public static Selector currentAltar;
 
     //TIMER
     private static org.parabot.environment.api.utils.Timer Timer = new Timer();
 
     @Override
     public boolean onExecute() {
-        strategies.add(new dataGathering());
-        strategies.add(new addBillChecks());
-        strategies.add(new bankRunes());
-        strategies.add(new dropRunes());
-        strategies.add(new teleportToAubury());
-        strategies.add(new buySupplies());
-        strategies.add(new teleportToAltar());
-        strategies.add(new craftRune());
+        strategies.add(new DataGathering());
+        strategies.add(new AddBillChecks());
+        strategies.add(new BankRunes());
+        strategies.add(new DropRunes());
+        strategies.add(new TeleportToAubury());
+        strategies.add(new BuySupplies());
+        strategies.add(new TeleportToAltar());
+        strategies.add(new CraftRune());
 
         provide(strategies);
 
@@ -104,7 +105,7 @@ public class Core extends Script implements Paintable
         g.drawRect(277, 195, 235, 139);
         g.setFont(font1);
         g.drawString("Status: ", 285, 210);
-        g.drawString(Core.CurrentStatus, 380, 210);
+        g.drawString(Core.currentStatus, 380, 210);
         g.drawString("Runes crafted: ", 285, 225);
         g.drawString(String.valueOf(runesCrafted), 380, 225);
         g.drawString("Levels gained: ", 285, 240);
