@@ -1,7 +1,7 @@
 package org.parabot.itunes.irunecrafting.data;
 
 
-    public enum Selector { air(1439, 2478, 1, 15, 557),
+    public enum selector { air(1439, 2478, 1, 15, 557),
         earth(1441, 2481, 15, 30, 558),
         water(1445, 2480, 30, 60, 556),
         mind(1449, 2479, 60, 75, 559),
@@ -13,7 +13,7 @@ package org.parabot.itunes.irunecrafting.data;
         private final int maxLevel;
         private final int rune_id;
 
-        Selector(int talisman_id, int altar_id, int minLevel, int maxLevel, int rune_id)
+        selector(int talisman_id, int altar_id, int minLevel, int maxLevel, int rune_id)
         {
             this.talisman_id = talisman_id;
             this.altar_id = altar_id;
@@ -22,14 +22,14 @@ package org.parabot.itunes.irunecrafting.data;
             this.rune_id = rune_id;
         }
 
-        public static Selector correspondingAltar(int currentLevel, String mode)
+        public static selector correspondingAltar(int currentLevel, String mode)
         {
             //Output
-            Selector selector = air;
+            selector selector = air;
 
             if (mode.equals("progressive"))
             {
-                for (Selector s : Selector.values())
+                for (org.parabot.itunes.irunecrafting.data.selector s : org.parabot.itunes.irunecrafting.data.selector.values())
                 {
                     if (currentLevel >= s.minLevel && currentLevel < s.maxLevel)
                     {
@@ -39,7 +39,7 @@ package org.parabot.itunes.irunecrafting.data;
             }
             else
             {
-                for (Selector s : Selector.values())
+                for (org.parabot.itunes.irunecrafting.data.selector s : org.parabot.itunes.irunecrafting.data.selector.values())
                 {
                     if (mode.equals(s.toString()))
                     {

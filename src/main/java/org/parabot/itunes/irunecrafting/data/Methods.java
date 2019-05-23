@@ -39,7 +39,7 @@ public class Methods
         }
     }
 
-    private String FormatNumber(double number) {
+    private String formatNumber(double number) {
         if (number >= 1000 && number < 1000000) {
             return new DecimalFormat("#,###.0").format(number / 1000) + "K";
         } else if (number >= 1000000 && number < 1000000000) {
