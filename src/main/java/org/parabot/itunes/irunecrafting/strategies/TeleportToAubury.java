@@ -17,17 +17,14 @@ public class TeleportToAubury implements Strategy {
     }
 
     @Override
-    public void execute()
-    {
+    public void execute() {
         Logger.addMessage("iRuneCrafting: teleporting to Aubury", true);
         Core.getSettings().setCurrentStatus("Teleporting to Aubury");
 
         Menu.clickButton(20053);
-        Time.sleep(new SleepCondition()
-        {
+        Time.sleep(new SleepCondition() {
             @Override
-            public boolean isValid()
-            {
+            public boolean isValid() {
                 return Interfaces.getBackDialogId() == Constants.TELEPORT_BACK_DIALOG_ID;
             }
         }, 2000);
@@ -36,11 +33,9 @@ public class TeleportToAubury implements Strategy {
         Time.sleep(1000, 1200);
 
         Menu.clickButton(2497);
-        Time.sleep(new SleepCondition()
-        {
+        Time.sleep(new SleepCondition() {
             @Override
-            public boolean isValid()
-            {
+            public boolean isValid() {
                 return Npcs.getClosest(Constants.AUBURY_ID) != null && getMyPlayer().getAnimation() == -1;
             }
         }, 5000);

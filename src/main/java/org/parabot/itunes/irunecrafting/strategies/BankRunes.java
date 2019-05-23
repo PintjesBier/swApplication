@@ -15,33 +15,27 @@ public class BankRunes implements Strategy {
     private Tile teleportTile = new Tile(3254, 3088, 0);
 
     @Override
-    public boolean activate()
-    {
+    public boolean activate() {
         return Core.getSettings().getMode().equals("Bank runes") && Core.getSettings().needsBanking() && Inventory.contains(Core.getSettings().getCurrentAltar().getRuneID()) && Game.isLoggedIn();
     }
 
     @Override
-    public void execute()
-    {
+    public void execute() {
         Logger.addMessage("iRuneCrafting: teleporting to bank", true);
         Core.getSettings().setCurrentStatus("Teleporting to bank");
 
         Menu.clickButton(20049);
-        Time.sleep(new SleepCondition()
-        {
+        Time.sleep(new SleepCondition() {
             @Override
-            public boolean isValid()
-            {
+            public boolean isValid() {
                 return Interfaces.getBackDialogId() == Constants.TELEPORT_BACK_DIALOG_ID;
             }
         }, 2000);
 
         Menu.clickButton(2497);
-        Time.sleep(new SleepCondition()
-        {
+        Time.sleep(new SleepCondition() {
             @Override
-            public boolean isValid()
-            {
+            public boolean isValid() {
                 return getMyPlayer().getLocation() == teleportTile && getMyPlayer().getAnimation() == -1;
             }
         }, 5000);
@@ -54,11 +48,9 @@ public class BankRunes implements Strategy {
         Time.sleep(Bank::isOpen, 3000);
 
         Bank.depositAllExcept(Core.getSettings().getCurrentAltar().getTalismanID(), Constants.RUNE_ESSENCE_ID);
-        Time.sleep(new SleepCondition()
-        {
+        Time.sleep(new SleepCondition() {
             @Override
-            public boolean isValid()
-            {
+            public boolean isValid() {
                 return !Inventory.contains(Core.getSettings().getCurrentAltar().getRuneID());
             }
         }, 5000);
@@ -66,11 +58,9 @@ public class BankRunes implements Strategy {
 
         Bank.close();
         Core.getSettings().setNeedsBanking(false);
-        Time.sleep(new SleepCondition()
-        {
+        Time.sleep(new SleepCondition() {
             @Override
-            public boolean isValid()
-            {
+            public boolean isValid() {
                 return Interfaces.isOpen(-1);
             }
         }, 2000);

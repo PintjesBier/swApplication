@@ -5,16 +5,16 @@ import org.rev317.min.api.wrappers.Tile;
 import java.awt.*;
 
 
-public class Area
-{
+public class Area {
     private Polygon p;
-    public Area(Tile... tiles)
-    {
+
+    public Area(Tile... tiles) {
         this.p = new Polygon();
         for (Tile tile : tiles) {
             p.addPoint(tile.getX(), tile.getY());
         }
     }
+
     public boolean contains(Tile tile) {
         return this.contains(tile.getX(), tile.getY());
     }

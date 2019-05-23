@@ -17,11 +17,9 @@ public class AddBillChecks implements Strategy {
     public void execute() {
 
         Inventory.getItem(Constants.BILL_CHECK_ID).interact(Items.Option.FOURTH);
-        Time.sleep(new SleepCondition()
-        {
+        Time.sleep(new SleepCondition() {
             @Override
-            public boolean isValid()
-            {
+            public boolean isValid() {
                 return !Inventory.contains(Constants.BILL_CHECK_ID);
             }
         }, 2000);

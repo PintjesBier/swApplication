@@ -24,19 +24,17 @@ import java.util.ArrayList;
         category = Category.RUNECRAFTING,
         description = "SW application.",
         name = "iRuneCrafting",
-        servers = { "Dreamscape" },
+        servers = {"Dreamscape"},
         version = 1.0)
 
-public class Core extends Script implements Paintable
-{
+public class Core extends Script implements Paintable {
 
     //VARIABLES
     private static Settings settings;
     private final ArrayList<Strategy> strategies = new ArrayList<>();
     private Paint paint;
 
-    public Core()
-    {
+    public Core() {
         paint = new Paint();
     }
 
@@ -56,7 +54,7 @@ public class Core extends Script implements Paintable
         //LOAD ui
         Gui gui = new Gui();
 
-        while(gui.isVisible()) {
+        while (gui.isVisible()) {
             Time.sleep(250);
         }
 
@@ -72,8 +70,7 @@ public class Core extends Script implements Paintable
     }
 
     @Override
-    public void paint(Graphics graphics)
-    {
+    public void paint(Graphics graphics) {
         paint.onRepaint(graphics);
     }
 

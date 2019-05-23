@@ -3,8 +3,7 @@ package org.parabot.itunes.irunecrafting.data;
 /**
  * Created by Tristan on 16/03/2018.
  */
-public class Constants
-{
+public class Constants {
     //Variables
     public static final int RUNE_ESSENCE_ID = 1437;
 

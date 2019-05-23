@@ -19,18 +19,15 @@ public class TeleportToAltar implements Strategy {
     }
 
     @Override
-    public void execute()
-    {
+    public void execute() {
         Logger.addMessage("iRuneCrafting: teleporting to altar", true);
         Core.getSettings().setCurrentStatus("Teleporting to altar");
 
         Inventory.getItem(Core.getSettings().getCurrentAltar().getTalismanID()).interact(Items.Option.FOURTH);
 
-        Time.sleep(new SleepCondition()
-        {
+        Time.sleep(new SleepCondition() {
             @Override
-            public boolean isValid()
-            {
+            public boolean isValid() {
                 return SceneObjects.getClosest(Core.getSettings().getCurrentAltar().getAltarID()) != null && getMyPlayer().getAnimation() == -1;
             }
         }, 5000);

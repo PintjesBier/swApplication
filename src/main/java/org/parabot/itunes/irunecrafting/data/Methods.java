@@ -9,11 +9,9 @@ import org.rev317.min.Loader;
 
 import java.text.DecimalFormat;
 
-public class Methods
-{
+public class Methods {
     //FUNCTIONAL
-    public static String stripNonDigits(final CharSequence input)
-    {
+    public static String stripNonDigits(final CharSequence input) {
         final StringBuilder sb = new StringBuilder(input.length());
 
         for (int i = 0; i < input.length(); i++) {

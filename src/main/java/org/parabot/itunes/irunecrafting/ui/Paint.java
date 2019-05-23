@@ -6,8 +6,7 @@ import org.rev317.min.api.methods.Skill;
 
 import java.awt.*;
 
-public class Paint
-{
+public class Paint {
     //TIMER
     private static org.parabot.environment.api.utils.Timer timer = new Timer();
 
@@ -23,8 +22,7 @@ public class Paint
     private final Font font1 = new Font("Arial", 1, 12);
 
 
-    public void onRepaint(Graphics g1)
-    {
+    public void onRepaint(Graphics g1) {
         Graphics2D g = (Graphics2D) g1;
         g.setColor(color1);
         g.fillRect(277, 195, 235, 139);
@@ -42,8 +40,7 @@ public class Paint
         g.drawString(timer.toString(), 380, 255);
     }
 
-    public void setStartingLevel(int startingLevel)
-    {
+    public void setStartingLevel(int startingLevel) {
         startingLevel = startingLevel;
     }
 }

@@ -9,16 +9,14 @@ import org.rev317.min.api.methods.Skill;
 /**
  * Created by Tristan on 21/03/2018.
  */
-public class DataGathering implements Strategy
-{
+public class DataGathering implements Strategy {
     @Override
     public boolean activate() {
         return !Core.getSettings().dataIsGathered();
     }
 
     @Override
-    public void execute()
-    {
+    public void execute() {
         Logger.addMessage("iRuneCrafting: gathering data", true);
         Core.getSettings().setCurrentStatus("Gathering data");
 

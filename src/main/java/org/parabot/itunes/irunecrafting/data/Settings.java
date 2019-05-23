@@ -1,6 +1,6 @@
 package org.parabot.itunes.irunecrafting.data;
-public class Settings
-{
+
+public class Settings {
     private Selector currentAltar;
     private boolean dataGathered;
     private boolean needsBanking;
@@ -9,8 +9,7 @@ public class Settings
     private String mode;
     private int runesCrafted;
 
-    public Settings(Selector currentAltar, boolean dataGathered, boolean needsBanking, String currentStatus, String runes, String mode, int runesCrafted)
-    {
+    public Settings(Selector currentAltar, boolean dataGathered, boolean needsBanking, String currentStatus, String runes, String mode, int runesCrafted) {
         this.currentAltar = currentAltar;
         this.dataGathered = dataGathered;
         this.needsBanking = needsBanking;
@@ -20,73 +19,59 @@ public class Settings
         this.runesCrafted = runesCrafted;
     }
 
-    public Selector getCurrentAltar()
-    {
+    public Selector getCurrentAltar() {
         return currentAltar;
     }
 
-    public boolean dataIsGathered()
-    {
+    public boolean dataIsGathered() {
         return dataGathered;
     }
 
-    public void setDataGathered(boolean dataGathered)
-    {
+    public void setDataGathered(boolean dataGathered) {
         this.dataGathered = dataGathered;
     }
 
-    public boolean needsBanking()
-    {
+    public boolean needsBanking() {
         return needsBanking;
     }
 
-    public void setNeedsBanking(boolean needsBanking)
-    {
+    public void setNeedsBanking(boolean needsBanking) {
         this.needsBanking = needsBanking;
     }
 
-    public void setCurrentAltar(Selector currentAltar)
-    {
+    public void setCurrentAltar(Selector currentAltar) {
         this.currentAltar = currentAltar;
     }
 
-    public String getCurrentStatus()
-    {
+    public String getCurrentStatus() {
         return currentStatus;
     }
 
-    public void setCurrentStatus(String currentStatus)
-    {
+    public void setCurrentStatus(String currentStatus) {
         this.currentStatus = currentStatus;
     }
 
-    public String getRunes()
-    {
+    public String getRunes() {
         return runes;
     }
 
-    public void setRunes(String runes)
-    {
+    public void setRunes(String runes) {
         this.runes = runes;
     }
 
-    public String getMode()
-    {
+    public String getMode() {
         return mode;
     }
 
-    public void setMode(String mode)
-    {
+    public void setMode(String mode) {
         this.mode = mode;
     }
 
-    public int getRunesCrafted()
-    {
+    public int getRunesCrafted() {
         return runesCrafted;
     }
 
-    public void setRunesCrafted(int runesCrafted)
-    {
+    public void setRunesCrafted(int runesCrafted) {
         this.runesCrafted = runesCrafted;
     }
 

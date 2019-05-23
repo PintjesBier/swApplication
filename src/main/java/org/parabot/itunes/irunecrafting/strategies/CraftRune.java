@@ -20,8 +20,7 @@ public class CraftRune implements Strategy {
     }
 
     @Override
-    public void execute()
-    {
+    public void execute() {
         Logger.addMessage("iRuneCrafting: crafting runes", true);
         Core.getSettings().setCurrentStatus("Crafting runes");
 
@@ -29,32 +28,26 @@ public class CraftRune implements Strategy {
 
         Methods.antiAFK();
 
-        Time.sleep(new SleepCondition()
-        {
+        Time.sleep(new SleepCondition() {
             @Override
-            public boolean isValid()
-            {
+            public boolean isValid() {
                 return getMyPlayer().getAnimation() == -1;
             }
         }, 3000);
         SceneObjects.getClosest(Core.getSettings().getCurrentAltar().getAltarID()).interact(SceneObjects.Option.CRAFT_RUNE);
-        Time.sleep(new SleepCondition()
-        {
+        Time.sleep(new SleepCondition() {
             @Override
-            public boolean isValid()
-            {
+            public boolean isValid() {
                 return !Inventory.contains(RUNE_ESSENCE_ID) && Inventory.contains(Core.getSettings().getCurrentAltar().getRuneID()) && getMyPlayer().getAnimation() == -1;
             }
         }, 4000);
 
 
-        if (!Inventory.contains(RUNE_ESSENCE_ID) && !Inventory.contains(RUNE_ESSENCE_ID))
-        {
+        if (!Inventory.contains(RUNE_ESSENCE_ID) && !Inventory.contains(RUNE_ESSENCE_ID)) {
             Core.getSettings().setRunesCrafted(Core.getSettings().getRunesCrafted() + runesToCraft);
         }
 
-        if (Core.getSettings().getMode().equals("Bank runes") && Inventory.contains(Core.getSettings().getCurrentAltar().getRuneID()))
-        {
+        if (Core.getSettings().getMode().equals("Bank runes") && Inventory.contains(Core.getSettings().getCurrentAltar().getRuneID())) {
             Core.getSettings().setNeedsBanking(true);
         }
 
