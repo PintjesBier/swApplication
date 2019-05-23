@@ -8,18 +8,18 @@ public enum Selector {
     MIND(1449, 2479, 60, 75, 559),
     BODY(1447, 2483, 75, 121, 560);
 
-    private final int talisman_id;
-    private final int altar_id;
+    private final int talismanId;
+    private final int altarId;
     private final int minLevel;
     private final int maxLevel;
-    private final int rune_id;
+    private final int runeId;
 
-    Selector(int talisman_id, int altar_id, int minLevel, int maxLevel, int rune_id) {
-        this.talisman_id = talisman_id;
-        this.altar_id = altar_id;
+    Selector(int talismanId, int altarId, int minLevel, int maxLevel, int runeId) {
+        this.talismanId = talismanId;
+        this.altarId = altarId;
         this.minLevel = minLevel;
         this.maxLevel = maxLevel;
-        this.rune_id = rune_id;
+        this.runeId = runeId;
     }
 
     public static Selector correspondingAltar(int currentLevel, String mode) {
@@ -45,15 +45,15 @@ public enum Selector {
     }
 
     public int getAltarID() {
-        return altar_id;
+        return altarId;
     }
 
     public int getTalismanID() {
-        return talisman_id;
+        return talismanId;
     }
 
     public int getRuneID() {
-        return rune_id;
+        return runeId;
     }
 }
 
