@@ -7,7 +7,7 @@ import org.parabot.environment.scripts.framework.Strategy;
 import org.parabot.itunes.irunecrafting.core.Core;
 import org.parabot.itunes.irunecrafting.data.Constants;
 import org.parabot.itunes.irunecrafting.data.Methods;
-import org.parabot.itunes.irunecrafting.data.selector;
+import org.parabot.itunes.irunecrafting.data.Selector;
 import org.rev317.min.api.methods.*;
 
 public class BuySupplies implements Strategy {
@@ -25,7 +25,7 @@ public class BuySupplies implements Strategy {
 
         Methods.antiAFK();
 
-        Core.getSettings().setCurrentAltar(selector.correspondingAltar(Skill.RUNECRAFTING.getRealLevel(), Core.getSettings().getRunes()));
+        Core.getSettings().setCurrentAltar(Selector.correspondingAltar(Skill.RUNECRAFTING.getRealLevel(), Core.getSettings().getRunes()));
 
         Time.sleep(new SleepCondition()
         {

@@ -1,7 +1,7 @@
 package org.parabot.itunes.irunecrafting.data;
 public class Settings
 {
-    private selector currentAltar;
+    private Selector currentAltar;
     private boolean dataGathered;
     private boolean needsBanking;
     private String currentStatus;
@@ -9,7 +9,7 @@ public class Settings
     private String mode;
     private int runesCrafted;
 
-    public Settings(selector currentAltar, boolean dataGathered, boolean needsBanking, String currentStatus, String runes, String mode, int runesCrafted)
+    public Settings(Selector currentAltar, boolean dataGathered, boolean needsBanking, String currentStatus, String runes, String mode, int runesCrafted)
     {
         this.currentAltar = currentAltar;
         this.dataGathered = dataGathered;
@@ -20,7 +20,7 @@ public class Settings
         this.runesCrafted = runesCrafted;
     }
 
-    public selector getCurrentAltar()
+    public Selector getCurrentAltar()
     {
         return currentAltar;
     }
@@ -45,7 +45,7 @@ public class Settings
         this.needsBanking = needsBanking;
     }
 
-    public void setCurrentAltar(selector currentAltar)
+    public void setCurrentAltar(Selector currentAltar)
     {
         this.currentAltar = currentAltar;
     }
