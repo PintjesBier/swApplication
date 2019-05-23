@@ -31,11 +31,12 @@ public class Core extends Script implements Paintable {
 
     //VARIABLES
     private static Settings settings;
-    private final ArrayList<Strategy> strategies = new ArrayList<>();
+    private final ArrayList<Strategy> strategies;
     private Paint paint;
 
     public Core() {
         paint = new Paint();
+        strategies = new ArrayList<>();
     }
 
     @Override
