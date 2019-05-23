@@ -4,7 +4,7 @@ public class Settings {
     private Selector currentAltar;
     private boolean dataGathered;
     private boolean needsBanking;
-    private String currentStatus;
+    private String currentStatus = "Waiting...";
     private String runes;
     private String mode;
     private int runesCrafted;

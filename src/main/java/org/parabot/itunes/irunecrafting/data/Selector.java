@@ -22,11 +22,11 @@ public enum Selector {
         this.runeId = runeId;
     }
 
-    public static Selector correspondingAltar(int currentLevel, String mode) {
+    public static Selector correspondingAltar(int currentLevel, String runes) {
         //Output
         Selector selector = AIR;
 
-        if (mode.equals("progressive")) {
+        if (runes.equals("progressive")) {
             for (Selector s : Selector.values()) {
                 if (currentLevel >= s.minLevel && currentLevel < s.maxLevel) {
                     selector = s;
@@ -34,7 +34,7 @@ public enum Selector {
             }
         } else {
             for (Selector s : Selector.values()) {
-                if (mode.equals(s.toString())) {
+                if (runes.toUpperCase().equals(s.toString())) {
                     selector = s;
                 }
             }

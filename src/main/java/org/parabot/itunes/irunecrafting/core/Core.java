@@ -36,6 +36,7 @@ public class Core extends Script implements Paintable {
 
     public Core() {
         paint = new Paint();
+        //settings = new Settings(Selector.correspondingAltar(Skill.RUNECRAFTING.getRealLevel(), Core.getSettings().getMode()), false, false, "Waiting...", Core.getSettings().getRunes(), Core.getSettings().getMode(), 0);
         strategies = new ArrayList<>();
     }
 
@@ -59,7 +60,12 @@ public class Core extends Script implements Paintable {
             Time.sleep(250);
         }
 
-        Core.getSettings().setCurrentStatus("Waiting...");
+        if (gui.getSettings() == null) {
+            return false;
+        }
+
+        settings = gui.getSettings();
+
         paint.setStartingLevel(Skill.RUNECRAFTING.getRealLevel());
 
         return true;

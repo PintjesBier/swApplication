@@ -21,7 +21,6 @@ public class Paint {
 
     private final Font font1 = new Font("Arial", 1, 12);
 
-
     public void onRepaint(Graphics g1) {
         Graphics2D g = (Graphics2D) g1;
         g.setColor(color1);
@@ -43,4 +42,5 @@ public class Paint {
     public void setStartingLevel(int startingLevel) {
         startingLevel = startingLevel;
     }
+
 }

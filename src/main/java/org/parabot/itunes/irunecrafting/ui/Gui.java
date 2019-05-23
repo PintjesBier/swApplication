@@ -1,14 +1,17 @@
 package org.parabot.itunes.irunecrafting.ui;
 
-import org.parabot.itunes.irunecrafting.core.Core;
+import org.parabot.itunes.irunecrafting.data.Selector;
+import org.parabot.itunes.irunecrafting.data.Settings;
+import org.rev317.min.api.methods.Skill;
 
 import javax.swing.*;
-import java.util.Objects;
 
 /**
  * Created by Tristan on 4/09/2018.
  */
 public class Gui extends JFrame {
+    private Settings settings;
+
     private JPanel panelMain;
     private JComboBox cmbRunes;
     private JButton btnStart;
@@ -26,9 +29,12 @@ public class Gui extends JFrame {
         setVisible(true);
 
         btnStart.addActionListener(e -> {
-            Core.getSettings().setRunes(Objects.requireNonNull(cmbRunes.getSelectedItem()).toString());
-            Core.getSettings().setMode(Objects.requireNonNull(cmbMode.getSelectedItem().toString()));
+            settings = new Settings(Selector.correspondingAltar(Skill.RUNECRAFTING.getRealLevel(), cmbRunes.getSelectedItem().toString()), false, false, "Waiting...", cmbRunes.getSelectedItem().toString(), cmbMode.getSelectedItem().toString(), 0);
             dispose();
         });
+    }
+
+    public Settings getSettings() {
+        return settings;
     }
 }
